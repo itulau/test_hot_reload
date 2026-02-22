@@ -29,12 +29,9 @@ class EmberQuestGame extends FlameGame {
     world.add(_ember);
     final watcher = DirectoryWatcher("assets/images");
     watcher.events.listen((event) async {
-      print("reload images");
-      images.clearCache();
-      await images.loadAll([
-        "ember.png",
-        "star.png",
-      ]);
+      final image = event.path.split("/").last;
+      images.clear(image);
+      await images.load(image);
     },);
   }
 

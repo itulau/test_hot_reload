@@ -30,6 +30,6 @@ class Star extends SpriteComponent with HasGameReference<EmberQuestGame> {
 
   void reloadSprite(WatchEvent event) async {
     await game.images.ready();
-    sprite = Sprite(game.images.fromCache("star.png"));
+    sprite = Sprite(await game.images.fromCache("star.png"));
   }
 }
